@@ -2,8 +2,11 @@ import fetch from "node-fetch";
 import  express from 'express';
 import cors from 'cors';
 import mongoose from "mongoose";
+import dotenv from 'dotenv'
+// const dotenv = require('dotenv').config();
 
-
+dotenv.config()
+const PORT = process.env.PORT || 5500;
 const url="mongodb://localhost:27017";
 const app=express();
 app.use(express.json());
@@ -130,5 +133,5 @@ const connectDB = async () => {
   };
 connectDB();
 // hosting app on localhost:5000
-app.listen(5000,console.log("server running at 5000"))
- 
+// app.listen(5000,console.log("server running at 5000"))
+app.listen(PORT, ()=> console.log("Server connected",PORT) );
